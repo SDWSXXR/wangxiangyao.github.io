@@ -15,7 +15,7 @@
 		}
 		.buttonbar{
 			height:34px;
-			
+
 		}
 		.cav-play,.cav-sound,.cav-screen,.progress-bar,.soundP-bar{
 			display: inline-block;
@@ -40,13 +40,13 @@
 
 		}
 		.progress.All{
-			
+
 			width:100%;
 			border-top:2px solid #ccc;
 			position: absolute;
-			
-			
-			
+
+
+
 		}
 		.progress.Now{
 			border-top:2px solid #AA1341;
@@ -64,13 +64,13 @@
 
 		}
 		.sound.all{
-			
+
 			width:100%;
 			border-top:2px solid #ccc;
 			position: absolute;
-			
-			
-			
+
+
+
 		}
 		.sound.now{
 			border-top:2px solid #AA1341;
@@ -85,20 +85,20 @@
 			position:absolute;
 			background-color: white;
 			z-index: 10;
-			
+
 			top:12px;
 		}
-		
+
 	</style>
 </head>
 <body>
 	<div class="box">
-		<video src="img/res/fun.mp4" controls="" autoplay=""></video>
+		<video src="http://ojekrccly.bkt.clouddn.com/%E9%B9%AC.mp4" controls="" autoplay=""></video>
 		<div class="buttonbar">
 			<canvas class="cav-play"></canvas>
 			<div class="play-time"></div>
 			<!-- <canvas class="progress-bar">
-				
+
 				<div class="button"></div>
 			</canvas> 尝试画布，扑街-->
 			<div class="progress-bar">
@@ -113,8 +113,8 @@
 				<div class="button sound-button"></div>
 			</div>
 			<canvas class="cav-screen"></canvas>
-		
-			
+
+
 		</div>
 	</div>
 	<script>
@@ -144,9 +144,9 @@
 		var y = 10;		//x,y用于进度条的控制
 		var m ;
 		var currentSound = 1 ;
-		
 
-		
+
+
 		play.width = 34;
 		play.height = 34;
 		iconSound.width = 34;
@@ -154,7 +154,7 @@
 		iconScreen.width = 34;
 		iconScreen.height = 34;
 
-		
+
 		(function(){
 			var ctx = play.getContext("2d");
 			ctx.clearRect(0,0,34,34);
@@ -162,7 +162,7 @@
 			ctx.beginPath();
 			ctx.moveTo(13,10);
 			ctx.lineTo(13,23);
-			
+
 			ctx.moveTo(20,10);
 			ctx.lineTo(20,23);
 			ctx.closePath();
@@ -182,7 +182,7 @@
 
 			ctx.fill();
 
-			
+
 			ctx.beginPath();
 			ctx.lineWidth = 2;
 			ctx.arc(17,17,7,-Math.PI/2.5,Math.PI/2.5);
@@ -226,7 +226,7 @@
 			ctx.stroke();
 			ctx.closePath();
 		})();
-		
+
 
 		//设置开始/暂停按钮
 		function pass(){
@@ -250,7 +250,7 @@
 					ctx.beginPath();
 					ctx.moveTo(13,10);
 					ctx.lineTo(13,23);
-					
+
 					ctx.moveTo(20,10);
 					ctx.lineTo(20,23);
 					ctx.closePath();
@@ -259,7 +259,7 @@
 				})();
 			}
 		}
-			
+
 		play.addEventListener("click", pass);
 
 		//设置显示播放时间
@@ -273,7 +273,7 @@
 			allTime = video.duration;
 			allTimeSec = Math.floor(allTime % 60);
 			allTimeMin = Math.floor(allTime / 60);
-			
+
 			soundButton.style.left = soundAll.offsetWidth * video.volume + "px";
 
 			playTime.innerHTML = currentTimeMin + ":" + currentTimeSec + " / " + allTimeMin + ":" + allTimeSec;
@@ -281,10 +281,10 @@
 
 		video.addEventListener("timeupdate",timetime)
 		function timetime(){
-			
-			
+
+
  			var currentTime = video.currentTime;
- 			
+
  			currentProgress()
 			var currentTimeSec = Math.floor(currentTime % 60);
 			var currentTimeMin = Math.floor(currentTime / 60);
@@ -294,15 +294,15 @@
 
 			playTime.innerHTML = currentTimeMin + ":" + currentTimeSec + " / " + allTimeMin + ":" + allTimeSec;
 		}
-		
 
-		
+
+
 		//画声音的那个图标，并且添加静音/不静音事件
 
-		
+
 		function muted(){
 			var ctx = iconSound.getContext("2d");
-				
+
 				ctx.clearRect(0,0,34,34);
 				ctx.beginPath();
 				ctx.moveTo(8,15);
@@ -312,22 +312,22 @@
 				ctx.lineTo(17,9);
 				ctx.lineTo(12,15);
 				ctx.closePath();
-	
+
 				ctx.fill();
-	
-				
+
+
 				ctx.beginPath();
 				ctx.lineWidth = 2;
 				ctx.arc(17,17,7,-Math.PI/2.5,Math.PI/2.5);
 				ctx.stroke();
 				ctx.closePath();
-	
+
 				ctx.beginPath();
 				ctx.arc(17,17,3,-Math.PI/5,Math.PI/5);
 				ctx.stroke();
 				ctx.closePath();
 
-				
+
 				ctx.beginPath();
 				ctx.moveTo(8,9);
 				ctx.lineTo(24,24);
@@ -346,16 +346,16 @@
 				ctx.lineTo(17,9);
 				ctx.lineTo(12,15);
 				ctx.closePath();
-	
+
 				ctx.fill();
-	
-				
+
+
 				ctx.beginPath();
 				ctx.lineWidth = 2;
 				ctx.arc(17,17,7,-Math.PI/2.5,Math.PI/2.5);
 				ctx.stroke();
 				ctx.closePath();
-	
+
 				ctx.beginPath();
 				ctx.arc(17,17,3,-Math.PI/5,Math.PI/5);
 				ctx.stroke();
@@ -364,18 +364,18 @@
 		}
 
 		function iconVoice(){
-			
-			
+
+
 			if(!video.muted){
-				
+
 				muted();
 
 			}else{
-				
+
 				nomuted();
-				
+
 			}
-				
+
 		}
 
 		iconSound.addEventListener("click",iconVoice);
@@ -400,16 +400,16 @@
 
 			if(video.width == window.screen.width){
 				if (document.exitFullscreen) {
-					document.exitFullscreen();					
-				}					
-				else if (document.mozCancelFullScreen) {					
-					document.mozCancelFullScreen();					
-				}					
-				else if (document.webkitCancelFullScreen) {					
-					document.webkitCancelFullScreen();					
-				}					
+					document.exitFullscreen();
+				}
+				else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+				}
+				else if (document.webkitCancelFullScreen) {
+					document.webkitCancelFullScreen();
+				}
 				else if (document.msExitFullscreen) {
-					document.msExitFullscreen();					
+					document.msExitFullscreen();
 				}
 				ctx.beginPath();
 				ctx.moveTo(8,14);
@@ -417,21 +417,21 @@
 				ctx.lineTo(14,8);
 				ctx.stroke();
 				ctx.closePath();
-	
+
 				ctx.beginPath();
 				ctx.moveTo(8,20);
 				ctx.lineTo(14,20);
 				ctx.lineTo(14,26);
 				ctx.stroke();
 				ctx.closePath();
-	
+
 				ctx.beginPath();
 				ctx.moveTo(20,26);
 				ctx.lineTo(20,20);
 				ctx.lineTo(26,20);
 				ctx.stroke();
 				ctx.closePath();
-	
+
 				ctx.beginPath();
 				ctx.moveTo(26,14);
 				ctx.lineTo(20,14);
@@ -442,15 +442,15 @@
 			}
 			else {
 
-				if(video.requestFullscreen) {  
-					video.requestFullscreen();  
-				} else if(video.mozRequestFullScreen) {  
-					video.mozRequestFullScreen();  
-				} else if(video.webkitRequestFullscreen) {  
-					video.webkitRequestFullscreen();  
-				} else if(video.msRequestFullscreen) {  
-					video.msRequestFullscreen();  
-				} 
+				if(video.requestFullscreen) {
+					video.requestFullscreen();
+				} else if(video.mozRequestFullScreen) {
+					video.mozRequestFullScreen();
+				} else if(video.webkitRequestFullscreen) {
+					video.webkitRequestFullscreen();
+				} else if(video.msRequestFullscreen) {
+					video.msRequestFullscreen();
+				}
 				console.log(video);
 				//video.removeAttribute("controls");
 				video.controls=false;
@@ -461,21 +461,21 @@
 				ctx.lineTo(14,8);
 				ctx.stroke();
 				ctx.closePath();
-	
+
 				ctx.beginPath();
 				ctx.moveTo(8,20);
 				ctx.lineTo(8,26);
 				ctx.lineTo(14,26);
 				ctx.stroke();
 				ctx.closePath();
-	
+
 				ctx.beginPath();
 				ctx.moveTo(20,26);
 				ctx.lineTo(26,26);
 				ctx.lineTo(26,20);
 				ctx.stroke();
 				ctx.closePath();
-	
+
 				ctx.beginPath();
 				ctx.moveTo(26,14);
 				ctx.lineTo(26,8);
@@ -483,9 +483,9 @@
 				ctx.stroke();
 				ctx.closePath();
 			}
-			
 
-			
+
+
 		}
 		iconScreen.addEventListener("click",screen);
 		//解决全屏问题
@@ -503,8 +503,8 @@
 		// 	ctx.lineTo(progressBar.clientWidth-10,17);
 		// 	ctx.stroke()
 		// }
-		
-		
+
+
 		// function currentProgress(){
 		// 	var ctx = progressBar.getContext("2d");
 		// 	begin = end;
@@ -527,20 +527,20 @@
 		buttonProgress.onmousedown = function(){
 			video.pause();
 			document.onmousemove = function(){
-				
+
 				x = event.clientX;
 
-				
+
 				y = x - progressBar.offsetLeft;
 				if(y > progressBar.offsetWidth){
 					y = progressBar.offsetWidth;
 				}else if(y < 0){
 					y = 0;
-					
+
 
 				}
 
-				
+
 				// buttonProgress.style.left = buttonProgress.offsetLeft + Math.floor(x - y) + "px";
 				buttonProgress.style.left = y  + "px";
 				// video.currentTime = (buttonProgress.offsetLeft + x - y)/progressAll.offsetWidth * video.duration;
@@ -552,8 +552,8 @@
 		buttonProgress.onmouseup = function(){
 			document.onmousemove = null;
 			video.play();
-			
-			
+
+
 		}
 
 		//音量条
@@ -568,7 +568,7 @@
 				}else if(y < 0){
 					y = 0;
 					video.muted = true;
-				} 
+				}
 
 				soundButton.style.left = y + "px";
 				video.volume = y/soundAll.offsetWidth * 1;
